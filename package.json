@@ -1,6 +1,6 @@
 {
   "name": "react-art-map",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A react map rendered with react-art",
   "main": "lib",
   "repository": {
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "googlemaps-utils": "0.0.1",
-    "map-the-tiles": "0.0.0"
+    "map-the-tiles": "0.0.0",
+    "paths-js": "^0.3.4"
   }
 }
