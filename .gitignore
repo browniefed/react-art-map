@@ -1,5 +1,3 @@
-lib/*
-!lib/umd
 examples/**/*-bundle.js
 node_modules
 npm-debug.log

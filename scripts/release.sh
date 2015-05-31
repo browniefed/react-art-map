@@ -19,8 +19,6 @@ fi
 
 next_ref="v$next_version"
 
-npm test -- --single-run
-
 update_version 'package.json' $next_version
 
 $changelog -t $next_ref
