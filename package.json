@@ -1,14 +1,14 @@
 {
   "name": "react-art-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react map rendered with react-art",
   "main": "lib",
   "repository": {
     "type": "git",
-    "url": "https://github.com/browniefed/react-map.git"
+    "url": "https://github.com/browniefed/react-art-map.git"
   },
-  "homepage": "https://github.com/browniefed/react-map",
-  "bugs": "https://github.com/browniefed/react-map/issues",
+  "homepage": "https://github.com/browniefed/react-art-map",
+  "bugs": "https://github.com/browniefed/react-art-map/issues",
   "scripts": {
     "build": "scripts/build.sh",
     "watch": "babel ./modules --watch -d lib",
@@ -29,7 +29,8 @@
     "webpack-dev-server": "^1.6.6"
   },
   "peerDependencies": {
-    "react": "0.13.x"
+    "react": "0.13.x",
+    "react-art": "^0.13.0"
   },
   "dependencies": {
     "googlemaps-utils": "0.0.1",
@@ -37,6 +38,5 @@
     "object-assign": "^2.0.0",
     "paths-js": "^0.3.4",
     "qs": "2.4.1",
-    "react-art": "^0.13.0"
   }
 }
