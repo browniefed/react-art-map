@@ -31,10 +31,11 @@
     "react": "0.13.x"
   },
   "dependencies": {
+    "googlemaps-utils": "0.0.1",
+    "map-the-tiles": "0.0.0",
     "object-assign": "^2.0.0",
     "paths-js": "^0.3.4",
     "qs": "2.4.1",
-    "react-art": "^0.13.0",
-    "tilebelt": "^0.7.1"
+    "react-art": "^0.13.0"
   }
 }
