@@ -1,9 +1,6 @@
 var React = require('react');
 var ReactArt = require('react-art');
-
-var TemplateUtil = require('./util/template');
 var TileUtil = require('./util/tile');
-
 var MapTheTiles = require('map-the-tiles');
 var Rectangle = require('paths-js/rectangle');
 
@@ -22,21 +19,6 @@ var rectanglePath = Rectangle({
 }).path.print();
 
 var gmu = require('googlemaps-utils');
-
-var degrees2meters = function(lon,lat) {
-        var x = lon * 20037508.34 / 180;
-        var y = Math.log(Math.tan((90 + lat) * Math.PI / 360)) / (Math.PI / 180);
-        y = y * 20037508.34 / 180;
-        return [x, y]
-}
-
-var meters2degress = function(x,y) {
-        var lon = x *  180 / 20037508.34 ;
-        var lat =Number(180 / Math.PI * (2 * Math.atan(Math.exp(y * Math.PI / 180)) - Math.PI / 2));
- 
-        return [lon, lat]
-}
- 
 
 var Map = React.createClass({
     propTypes: {
@@ -97,7 +79,7 @@ var Map = React.createClass({
             this.coords.x = e.x;
             this.coords.y = e.y;
 
-          var centerMeters = degrees2meters(this.dragCenter[0], this.dragCenter[1]);
+          var centerMeters = TileUtil.degrees2meters(this.dragCenter[0], this.dragCenter[1]);
           
            var R = 6378137,
               lat = this.dragCenter[1],
@@ -124,34 +106,18 @@ var Map = React.createClass({
       }
     },
     getTiles() {
-        var layout = [];
-        var bounds = gmu.calcBounds(this.props.center[1], this.props.center[0], this.props.zoom, this.props.width, this.props.height);
-        var topLeftMeters = degrees2meters(bounds.left, bounds.top),
-            bottomRightMeters = degrees2meters(bounds.right, bounds.bottom);
-        var tiler = new MapTheTiles(null, this.props.tileWidth);
-        var layoutForBounds = {
-            top: topLeftMeters[1],
-            left: topLeftMeters[0],
-            right: bottomRightMeters[0],
-            bottom: bottomRightMeters[1]
-        };
 
-        var tiles = tiler.getTiles(layoutForBounds, this.props.zoom)
+        var layout = TileUtil.getTileLayout({
+            center: this.props.center,
+            zoom: this.props.zoom,
+            tileWidth: this.props.tileWidth,
+            
+            tileSource: this.props.tileSource,
+            subdomains: this.props.subdomains,
 
-        tiles.forEach(function(tile) {
-            var coordPoint = {
-                x: tile.X,
-                y: tile.Y,
-                z: tile.Z
-            },
-            coord = {
-                x: tile.left,
-                y: tile.top,
-                img: TileUtil.getTileUrl(this.props.tileSource, coordPoint, this.props.subdomains)
-            };
-
-            layout.push(coord);
-        }, this)
+            width: this.props.width,
+            height: this.props.height
+        })
 
         return layout.map(function(tile) {
             return (
