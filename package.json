@@ -12,6 +12,7 @@
   "scripts": {
     "build": "scripts/build.sh",
     "watch": "babel ./modules --watch -d lib",
+    "prepublish": "npm run build",
     "examples": "webpack-dev-server --config examples/webpack.config.js --content-base examples"
   },
   "authors": [
