@@ -1,7 +1,7 @@
 {
-  "name": "react-map",
+  "name": "react-art-map",
   "version": "1.0.0",
-  "description": "A reat map",
+  "description": "A react map rendered with react-art",
   "main": "lib",
   "repository": {
     "type": "git",
